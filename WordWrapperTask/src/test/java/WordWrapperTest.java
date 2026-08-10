@@ -17,9 +17,17 @@ public class WordWrapperTest {
         assertEquals("",result);
     }
     @Test
-    public void splitWordWithoutWhiteSpace(){
+    public void splitWordWithoutWhiteSpaceTest(){
         String result = Wrapper.wrap("abcdefg", 2);
 
         assertEquals("ab\ncd\nef\ng", result);
     }
+    @Test
+    public void splitWordWithWhiteSpacesCasaTest(){
+        String result = Wrapper.wrap("abc defm w nf" , 2);
+
+        assertEquals("ab\nc\nde\nfm\nw\nnf", result);
+    }
+
+
 }

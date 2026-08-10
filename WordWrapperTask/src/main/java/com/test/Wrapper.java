@@ -9,13 +9,29 @@ public class Wrapper {
         if(wordLength < width){
             return "";
         }
+
+
         StringBuilder res = new StringBuilder();
-        int counter = 0;
-        while(counter < wordLength - width){
-            res.append(word.substring(counter, counter+width) + "\n");
-            counter+=width;
+        int position = 0;
+
+
+
+        while(position < wordLength - width){
+            int whitespace = word.lastIndexOf(' ', position + width);
+            int appendAt;
+            int offset = 0;
+            if(position < whitespace){
+                appendAt = whitespace;
+                offset = 1;
+            }
+            else {
+                appendAt = position+width;
+            }
+            res.append(word.substring(position, appendAt));
+            res.append("\n");
+            position=appendAt+ offset;
         }
-        res.append(word.substring(counter));
+        res.append(word.substring(position));
         return res.toString();
     }
 }
